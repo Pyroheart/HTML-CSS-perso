@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+/* 
+layout
+*/
+html,body {min-height:100vh}
+body {
+  display:flex;
+  flex-flow:column nowrap;
+  justify-content:center;
+  align-items:center;
+}
+
+
+
+/* 
+Counters 
+*/
+
+.menu ol { 
+  counter-reset: menu;
+}
+
+/*
+Regular menu items
+*/
+
+.menu-item a {
+  display:flex;
+  justify-content:flex-start; /*shrink towards text*/
+  color:currentColor;
+  text-decoration:none;
+  padding:0.3rem 0; /* avoid flickin' */
+  order:0;
+}
+
+.menu-item a::before { /* dots */
+  content:"";
+  display:block;
+  border-bottom:1px dotted black;
+  position:relative; top:-3px;
+  flex:1 1 auto;
+  margin:0 1rem;
+  order:1;
+}
+
+.menu-item a::after { /* item ids */
+  counter-increment:menu;
+  content:counters(menu, ".");
+  flex:0 0 auto;
+  order:2;
+  text-decoration:underline;
+}
+
+
+/* 
+Sub menu & items
+*/
+
+.sub-menu {
+  font-size:1.6rem;
+  font-weight:normal;
+  counter-reset: puntoNumber;
+}
+
+.sub-menu > li > a {
+  text-indent:0;
+  padding:0.5rem 0 0.5rem 2ch;
+  margin:0;
+}
+
+
+.sub-menu > li {
+  list-style: none;
+  counter-reset: item;
+  counter-increment: puntoNumber;
+}
+
+.third > li::before {
+  content: counter(item) "." counter(puntoNumber);
+  counter-increment: item 3;
+}
+
+.fourth > span {
+  content: counter(item) "." counter(puntoNumber);
+  counter-increment: item 4;
+}
+
+
+
+/*
+Main menu
+*/
+
+.menu {
+  width:22rem;
+  min-width:20rem;
+  display:flex;
+  flex-flow:column nowrap;
+  font:bold 2.4rem/1 'Gentinum Book Plus', serif;
+  position:relative;
+}
+
+.menu::before {
+  content:"--";
+  align-self:center;
+  margin-bottom:1rem;
+}
+
+.menu::after {
+  content:"--";
+  align-self:center;
+  margin-top:1rem;
+}
