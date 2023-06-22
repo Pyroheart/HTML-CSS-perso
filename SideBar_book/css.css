@@ -82,7 +82,7 @@ Sub menu & items
   counter-increment: item 3;
 }
 
-.fourth > span {
+.fourth > li::before {
   content: counter(item) "." counter(puntoNumber);
   counter-increment: item 4;
 }
